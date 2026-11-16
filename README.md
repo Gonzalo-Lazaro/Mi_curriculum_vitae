@@ -2,7 +2,7 @@
 
 Currículum vitae creado con React y Vite para el módulo de Desarrollo de Interfaces.
 
-![Captura del CV](Foto.png)
+![Captura del CV](CV.png)
 
 ## Herramientas utilizadas
 - Visual Studio Code (extensiones: JavaScript (ES6) Code Snippets y Live Server)
