@@ -1,0 +1,198 @@
+/* ESTILOS DEL CV - App.css
+   Decisiones de diseño:
+   - Paleta morado/azul (#9333ea, #3b82f6): Se repite en el header, las barras y los
+     detalles para dar coherencia visual.
+   - Degradado en el header y en las barras de habilidades: Da profundidad y destaca lo importante.
+   - border-radius y box-shadow: Esquinas redondeadas y sombra para un aspecto limpio y con relieve.
+   - CSS Grid en dos columnas: Separa datos personales (izquierda) de trayectoria (derecha).
+   - @media: En pantallas estrechas pasa a una columna para que el CV se lea bien en móvil. */
+
+/* Estilos: Fondo degradado de toda la página */
+body {
+  background: linear-gradient(to bottom right, #1e293b, #581c87, #1e293b); /* Degradado diagonal oscuro */
+  min-height: 100vh;       /* La página ocupa como mínimo toda la altura de la pantalla */
+  padding: 20px;           /* Espacio entre el borde de la pantalla y el CV */
+  font-family: Arial, sans-serif;
+  margin: 0;               /* Elimina el margen del navegador */
+}
+
+/* Contenedor principal: Contenedor blanco con bordes redondeados y sombra */
+.contenedor-principal {
+  max-width: 1000px;       /* Ancho máximo del CV */
+  margin: 0 auto;          /* Centra el contenedor */
+  background-color: white;
+  border-radius: 20px;     /* Bordes redondeados */
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);  /* Sombra para dar profundidad */
+  overflow: hidden;        /* Recorta el header para respetar las esquinas redondeadas */
+}
+
+/* Header: Cabecera con degradado morado y azul */
+.header {
+  background: linear-gradient(to right, #9333ea, #3b82f6);  /* Degradado de morado a azul */
+  color: white;
+  padding: 40px;
+  text-align: center;      /* Centra foto, nombre, título y contacto */
+}
+
+/* Foto de perfil circular con borde blanco */
+.foto-perfil {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;      /* 50% convierte la imagen en un círculo */
+  border: 4px solid white;
+  margin-bottom: 20px;
+}
+
+/* Nombre completo */
+.header h1 {
+  font-size: 48px;
+  margin: 10px 0;
+}
+
+/* Título profesional */
+.header h2 {
+  font-size: 24px;
+  font-weight: normal;
+  opacity: 0.9;            /* Algo transparente para dar jerarquía visual */
+  margin: 10px 0;
+}
+
+
+/* Secciones: Bloques grises con bordes redondeados */
+.seccion {
+  padding: 30px;           /* Espacio interior */
+  margin: 20px;            /* Espacio entre secciones */
+  background-color: #f9fafb;
+  border-radius: 10px;
+}
+
+/* Título de cada sección (Sobre Mí, Habilidades) */
+.titulo-seccion {
+  font-size: 24px;
+  font-weight: bold;
+  color: #1f2937;
+  margin-bottom: 15px;
+}
+
+/* Etiquetas (se usan en Idiomas): Degradado suave y borde morado */
+.lista-habilidades {
+  display: flex;           /* Coloca las etiquetas en fila */
+  flex-wrap: wrap;         /* Si no caben, pasan a la línea siguiente */
+  gap: 10px;               /* Separación entre etiquetas */
+}
+
+.habilidad {
+  background: linear-gradient(to right, #ede9fe, #dbeafe);  /* Degradado suave */
+  padding: 10px 20px;
+  border-radius: 20px;     /* Esquinas muy redondeadas: forma de etiqueta */
+  border: 2px solid #9333ea;
+  font-weight: bold;
+  color: #1f2937;
+}
+
+/* Experiencia y formación: Barra morada a la izquierda de cada elemento */
+.item-experiencia {
+  border-left: 4px solid #9333ea;  /* Esta es la barra morada lateral */
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+/* Título obtenido */
+.item-experiencia h3 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 5px 0;
+}
+
+/* Nombre del centro educativo */
+.empresa {
+  color: #9333ea;
+  font-weight: bold;
+  margin: 5px 0;
+}
+
+/* Periodo en forma de etiqueta gris redondeada */
+.tiempo {
+  background-color: #e5e7eb;
+  display: inline-block;   /* Ajusta el fondo al ancho del texto */
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 14px;
+  margin: 5px 0;
+  color: #4b5563;
+}
+
+/* Dos columnas: CSS Grid que divide el contenido bajo el header */
+.contenido {
+  display: grid;
+  grid-template-columns: 1fr 2fr;  /* Izquierda estrecha (1 parte), derecha ancha (2 partes) */
+  align-items: start;              /* Cada columna ocupa solo la altura de su contenido */
+}
+
+/* Responsive: En pantallas estrechas pasa a una sola columna */
+@media (max-width: 800px) {
+  .contenido {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Habilidades con barra de progreso */
+.habilidad-barra {
+  margin-bottom: 15px;     /* Separación entre una habilidad y la siguiente */
+}
+
+/* Fila con el nombre a la izquierda y el porcentaje a la derecha */
+.habilidad-info {
+  display: flex;
+  justify-content: space-between;  /* Separa nombre y porcentaje en los extremos */
+  font-weight: bold;
+  color: #1f2937;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+/* Barra de fondo (gris): Representa el 100% */
+.barra-fondo {
+  background-color: #e5e7eb;
+  border-radius: 10px;
+  height: 10px;
+  overflow: hidden;        /* Recorta la barra de nivel para respetar las esquinas redondeadas */
+}
+
+/* Barra de nivel: Mismo degradado morado/azul del header.
+   Su ancho se define en el JSX con style={{ width: "..." }} */
+.barra-nivel {
+  background: linear-gradient(to right, #9333ea, #3b82f6);
+  height: 100%;
+  border-radius: 10px;
+}
+
+/* Competencias clave: Lista con guiones */
+.lista-competencias {
+  list-style: none;        /* Quita las viñetas por defecto */
+  padding: 0;
+  margin: 0;
+}
+
+.lista-competencias li {
+  position: relative;      /* Permite colocar el guion en posición absoluta */
+  padding-left: 20px;      /* Deja hueco para el guion */
+  margin-bottom: 8px;
+  color: #1f2937;
+}
+
+/* El guion se dibuja con un pseudoelemento ::before, en color morado */
+.lista-competencias li::before {
+  content: "–";
+  position: absolute;
+  left: 0;
+  color: #9333ea;
+  font-weight: bold;
+}
+
+/* Línea fina bajo el título de la sección */
+.titulo-linea {
+  border-bottom: 2px solid #9333ea;
+  padding-bottom: 8px;
+}
